@@ -2,8 +2,11 @@ def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
     num_words = number_of_words(text)
+    letter_count = count_of_letters(text)
+    
     print(f"This book contains {num_words} words.")
-    print(count_of_letters(text))
+    
+    print(sort_letters(letter_count))
 
 def get_book_text(path):    
     with open(path) as f:
@@ -22,8 +25,6 @@ def count_of_letters(text_file):
     # Create list with all lowercase letters
     for letter in lower_letters:
         letters.append(letter)
-    # print(letters)
-    # print(type(letters))
     
     # Convert list to Dictionary
 
@@ -38,6 +39,15 @@ def count_of_letters(text_file):
             count_of_letters[letter] = count_of_letters.get(letter) + 1
     
     return count_of_letters
+
+def sort_letters(dict):
+    list_of_count_of_letters = []
+    for k in dict:
+        letter_dict = {"letter": k, "num": dict.get(k)}
+        print(letter_dict)
+        list_of_count_of_letters.append(letter_dict)
+   
     
+
 
 main()        
