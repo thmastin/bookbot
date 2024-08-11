@@ -1,19 +1,15 @@
 def main():
     lower_letters = "abcdefghijklmnopqrstuvwxyz"
     letters = []
-    letters_num_value = []
+    count_of_letters = {}
     for letter in lower_letters:
         letters.append(letter)
     print(letters)
     print(type(letters))
-    letters_num_value = letter_values(letters)
-    print(letters_num_value)
-    print(type(letters_num_value))
-
-def letter_values(list_of_letters):
-    numbers = []
-    for letter in list_of_letters:
-        numbers.append(ord(letter))
-    return numbers
-
+    for letter in letters:
+        count_of_letters[letter] = 0
+    print(count_of_letters)
+    for letter in lower_letters:
+        count_of_letters[letter] = count_of_letters.get(letter) + 1
+    print(count_of_letters)
 main()
