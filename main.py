@@ -3,8 +3,10 @@ def main():
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     num_characters = get_num_characters(text)
+    characters_sorted = sort_characters(num_characters)
     print(f"{num_words} words found in the document")
     print(f"The frequency of the use of characters in the document are:{num_characters}")
+    print(f"This is the characters sorted: {characters_sorted}")
 
 
 def get_num_words(text):
@@ -26,6 +28,16 @@ def get_num_characters(text):
             else:
                 character_count[text_lower[i]] += 1
     return character_count
+
+def sort_characters(dictionary):
+    print(dictionary)
+    character_list = []
+    for k in dictionary:
+        print(k, dictionary[k])
+        new_dict = {"letter": k, "num": dictionary[k]}
+        character_list.append(new_dict)
+    return character_list
+
         
 
 
