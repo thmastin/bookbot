@@ -1,15 +1,15 @@
 def main():
     book_path = "books/frankenstein.txt"
-    test_dict = [{"letter": "b", "num": 5}, {"letter": "a", "num": 10}]
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     num_characters = get_num_characters(text)
     characters_dict = dict_characters(num_characters)
-    sorted_letters = sort_letters(test_dict)
+    sorted_letters = sort_letters(characters_dict)
     print(f"{num_words} words found in the document")
     print(f"The frequency of the use of characters in the document are:{num_characters}")
     print(f"This is the dictonary of characters: {characters_dict}")
     print(f"This is the dictonary sorted: {sorted_letters}")
+    generate_report(book_path, num_words, sorted_letters)
 
 
 def get_num_words(text):
@@ -37,7 +37,7 @@ def dict_characters(dictionary):
     character_list = []
     for k in dictionary:
         print(k, dictionary[k])
-        new_dict = {"letter": k, "num": dictionary[k]}
+        new_dict = {"char": k, "num": dictionary[k]}
         character_list.append(new_dict)
     return character_list
 
@@ -47,6 +47,15 @@ def sort_on(dict):
 def sort_letters(dict):
     dict.sort(reverse=True, key=sort_on)
     return dict
+
+def generate_report(book, words, list_of_letters):
+    print(f"--- Begin report on {book} ---")
+    print(f"{words} words found in this document.\n")
+
+    for letter in list_of_letters:
+        print(f"The {letter["char"]} character was found {letter["num"]} times.")
+    
+
 
         
 
