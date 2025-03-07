@@ -1,5 +1,12 @@
+import sys
+from stats import get_num_words
+
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     num_characters = get_num_characters(text)
@@ -10,11 +17,6 @@ def main():
     print(f"This is the dictonary of characters: {characters_dict}")
     print(f"This is the dictonary sorted: {sorted_letters}")
     generate_report(book_path, num_words, sorted_letters)
-
-
-def get_num_words(text):
-    words = text.split()
-    return len(words)
 
 
 def get_book_text(path):
@@ -53,7 +55,7 @@ def generate_report(book, words, list_of_letters):
     print(f"{words} words found in this document.\n")
 
     for letter in list_of_letters:
-        print(f"The {letter["char"]} character was found {letter["num"]} times.")
+        print(f"{letter['char']}: {letter['num']}")
     
 
 
